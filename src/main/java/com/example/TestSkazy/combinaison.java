@@ -2,10 +2,19 @@ package com.example.TestSkazy;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.PathVariable;
 
+@SpringBootApplication
+@RestController
 public class combinaison {
+
+    public static void main(String[] args) {
+        SpringApplication.run(combinaison.class, args);
+    }
+
     @PostMapping("/baoloc/{a}/{b}/{c}/{d}/{e}/{f}/{g}/{h}/{i}")
     public String postCombinaison(@PathVariable String a, @PathVariable String b, @PathVariable String c,
             @PathVariable String d,
@@ -21,26 +30,16 @@ public class combinaison {
     }
 
     @GetMapping("/baoloc/{a}/{b}/{c}/{d}/{e}/{f}/{g}/{h}/{i}")
-    public String getCombinaison(@PathVariable String a, @PathVariable String b, @PathVariable String c,
-            @PathVariable String d,
-            @PathVariable String e, @PathVariable String f, @PathVariable String g, @PathVariable String h,
-            @PathVariable String i) {
+    public Boolean getCombinaison(@PathVariable double a, @PathVariable double b, @PathVariable double c,
+            @PathVariable double d,
+            @PathVariable double e, @PathVariable double f, @PathVariable double g, @PathVariable double h,
+            @PathVariable double i) {
 
         // SELECT dans la base
-        return "d";
+        return (a + (13 * b) / c + d + 12 * e - f - 11 + (g * h) / i - 10) == 66;
     }
 
-    @DeleteMapping("/baoloc/{a}/{b}/{c}/{d}/{e}/{f}/{g}/{h}/{i}")
-    public String deleteCombinaison(@PathVariable String a, @PathVariable String b, @PathVariable String c,
-            @PathVariable String d,
-            @PathVariable String e, @PathVariable String f, @PathVariable String g, @PathVariable String h,
-            @PathVariable String i) {
-
-        // DELETE dans la base
-        return "No";
-    }
-
-    private static Boolean baoloc(int a, int b, int c, int d, int e, int f, int g, int h, int i) {
+    public Boolean baoloc(int a, int b, int c, int d, int e, int f, int g, int h, int i) {
         return (a + (13 * b) / c + d + 12 * e - f - 11 + (g * h) / i - 10) == 66;
     }
 
